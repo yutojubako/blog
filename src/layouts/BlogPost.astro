@@ -17,7 +17,7 @@ const {
 	slug
 } = post
 
-const socialImage = ogImage ?? `/og-image/${slug}.png`
+const socialImage = ogImage ?? `${import.meta.env.BASE_URL}og-image/${slug}.png`
 const articleDate = updatedDate?.toISOString() ?? publishDate.toISOString()
 const { headings } = await post.render()
 ---
