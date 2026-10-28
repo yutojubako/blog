@@ -1,0 +1,19 @@
+---
+import { cn } from '@/utils'
+const { as: Tag = 'a', class: className, title, href, style = 'button' } = Astro.props
+---
+
+<Tag
+	class={cn(
+		className,
+		'inline-flex items-center gap-x-1 border border-border/80 bg-transparent px-3 py-0.5 text-sm transition-colors hover:border-accent hover:text-accent',
+		!href && 'cursor-default',
+		style === 'pill' && 'rounded-none'
+	)}
+	href={href}
+	data-astro-prefetch
+>
+	<slot name='icon-before' />
+	<p>{title}</p>
+	<slot name='icon-after' />
+</Tag>

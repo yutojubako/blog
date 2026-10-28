@@ -1,0 +1,73 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+	:root {
+		/* Ivory & Ink: warm ivory paper, near-black ink, deep-blue accent */
+		--background: 44 38% 95%;
+		--foreground: 30 12% 10%;
+		--card: 44 33% 97%;
+		--card-foreground: 30 12% 10%;
+		--popover: 44 33% 97%;
+		--popover-foreground: 30 12% 10%;
+		--primary: 30 12% 10%;
+		--primary-foreground: 44 38% 95%;
+		--secondary: 43 25% 90%;
+		--secondary-foreground: 30 12% 10%;
+		--muted: 43 25% 90%;
+		--muted-foreground: 35 10% 35%;
+		--accent: 218 62% 30%;
+		--accent-foreground: 44 38% 95%;
+		--destructive: 0 62% 35%;
+		--destructive-foreground: 44 38% 95%;
+		--border: 40 20% 82%;
+		--input: 40 20% 82%;
+		--ring: 218 62% 30%;
+		--radius: 0rem;
+	}
+	.dark {
+		--background: 30 10% 8%;
+		--foreground: 44 30% 92%;
+		--card: 30 10% 11%;
+		--card-foreground: 44 30% 92%;
+		--popover: 30 10% 11%;
+		--popover-foreground: 44 30% 92%;
+		--primary: 44 30% 92%;
+		--primary-foreground: 30 10% 10%;
+		--secondary: 30 8% 18%;
+		--secondary-foreground: 44 30% 92%;
+		--muted: 30 8% 18%;
+		--muted-foreground: 40 10% 65%;
+		--accent: 213 60% 62%;
+		--accent-foreground: 30 10% 8%;
+		--destructive: 0 50% 45%;
+		--destructive-foreground: 44 30% 92%;
+		--border: 30 8% 22%;
+		--input: 30 8% 22%;
+		--ring: 213 60% 62%;
+	}
+}
+
+@layer base {
+	* {
+		@apply border-border;
+	}
+	html {
+		@apply bg-background;
+	}
+	body {
+		@apply bg-background text-foreground;
+		font-feature-settings: 'liga' 1, 'kern' 1;
+	}
+	/* Serif display headings, sans body — academic-journal feel */
+	h1,
+	h2,
+	h3 {
+		@apply font-serif;
+		letter-spacing: -0.01em;
+	}
+	a {
+		@apply underline-offset-4;
+	}
+}
