@@ -12,6 +12,8 @@ Yuto Imai の個人ブログ。[Astro](https://astro.build) 製（[astro-theme-r
 
 ## About
 
+Agent discovery setup and GitHub Pages limitations: [AGENT-DISCOVERY.md](AGENT-DISCOVERY.md).
+
 技術メモと学会参加報告（YANS など）を中心に書いています。履歴書サイトは [maimai.github.io](https://github.com/yutojubako/maimai.github.io) で別途公開しています。
 
 ## 記事の書き方

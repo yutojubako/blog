@@ -1,0 +1,49 @@
+<script>
+	// Experimental enhancement: ordinary browsers need no polyfill or remote scripts.
+	type ModelContext = {
+		registerTool: (
+			tool: {
+				name: string
+				description: string
+				inputSchema: Record<string, unknown>
+				execute: () => Promise<{ content: { type: string; text: string }[] }>
+			},
+			options: { signal: AbortSignal }
+		) => void | Promise<void>
+	}
+	const context =
+		(document as Document & { modelContext?: ModelContext }).modelContext ??
+		(navigator as Navigator & { modelContext?: ModelContext }).modelContext
+	let controller: AbortController | undefined
+	function register() {
+		if (!context || controller) return
+		controller = new AbortController()
+		const signal = controller.signal
+		void Promise.resolve()
+			.then(() =>
+				context!.registerTool(
+					{
+						name: 'list_blog_posts',
+						description:
+							'List Yuto Imai’s published blog posts with titles, descriptions, tags, and HTML/Markdown URLs. No authentication required.',
+						inputSchema: { type: 'object', properties: {}, additionalProperties: false },
+						execute: async () => {
+							const response = await fetch(`${import.meta.env.BASE_URL}posts.json`, { signal })
+							if (!response.ok) throw new Error(`Post index request failed: ${response.status}`)
+							return { content: [{ type: 'text', text: await response.text() }] }
+						}
+					},
+					{ signal }
+				)
+			)
+			.catch((error) => {
+				if (!signal.aborted) console.warn('Optional WebMCP registration unavailable:', error)
+			})
+	}
+	register()
+	window.addEventListener('pagehide', () => {
+		controller?.abort()
+		controller = undefined
+	})
+	window.addEventListener('pageshow', register)
+</script>

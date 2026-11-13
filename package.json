@@ -5,7 +5,8 @@
 	"scripts": {
 		"dev": "astro check --watch & astro dev",
 		"start": "astro dev",
-		"build": "astro check && astro build",
+		"build": "npm test && astro check && astro build",
+		"test": "node --test scripts/*.test.mjs",
 		"preview": "astro preview",
 		"astro": "astro",
 		"lint": "prettier --write  \"**/*.{js,jsx,ts,tsx,md,mdx,svelte,astro}\" && eslint --fix \"src/**/*.{js,ts,jsx,tsx,svelte,astro}\""

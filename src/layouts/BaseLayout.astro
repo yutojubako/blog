@@ -5,6 +5,7 @@ import BaseHead from '@/components/BaseHead.astro'
 import Footer from '@/components/layout/Footer.astro'
 import Header from '@/components/layout/Header.astro'
 import ThemeProvider from '@/components/ThemeProvider.astro'
+import AgentTools from '@/components/AgentTools.astro'
 
 import { siteConfig } from '@/site-config'
 
@@ -20,9 +21,11 @@ const {
 <html lang={siteConfig.lang} class=''>
 	<head>
 		<BaseHead articleDate={articleDate} description={description} ogImage={ogImage} title={title} />
+		<slot name='head' />
 	</head>
 
 	<body class='flex justify-center bg-background'>
+		<AgentTools />
 		<ThemeProvider />
 		<main
 			class='flex min-h-screen w-screen max-w-[56rem] flex-col items-center px-6 pb-10 pt-10 font-satoshi text-[0.95rem] leading-[1.85] sm:px-10 lg:px-10'

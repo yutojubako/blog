@@ -23,6 +23,12 @@ const { headings } = await post.render()
 ---
 
 <PageLayout meta={{ articleDate, description, ogImage: socialImage, title }}>
+	<link
+		slot='head'
+		rel='alternate'
+		type='text/markdown'
+		href={`${import.meta.env.BASE_URL}markdown/${slug}.md`}
+	/>
 	<div class='w-full'>
 		<Button title='Back' href={`${import.meta.env.BASE_URL}`} style='button'>
 			<svg

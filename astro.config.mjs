@@ -7,6 +7,7 @@ import rehypeExternalLinks from 'rehype-external-links'
 import expressiveCode from 'astro-expressive-code'
 import { expressiveCodeOptions } from './src/site.config'
 import icon from 'astro-icon'
+import agentDiscovery from './scripts/agent-discovery.mjs'
 
 // https://astro.build/config
 export default defineConfig({
@@ -18,7 +19,8 @@ export default defineConfig({
 			applyBaseStyles: false
 		}),
 		mdx(),
-		icon()
+		icon(),
+		agentDiscovery()
 	],
 	markdown: {
 		remarkPlugins: [remarkUnwrapImages, remarkReadingTime],
